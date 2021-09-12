@@ -1,9 +1,11 @@
 var request = require('request');
 var cheerio = require('cheerio');
 const fs = require('fs');
-const { del } = require('request');
+const { del, get } = require('request');
 const express = require('express');
 const app = express();
+
+
 //const PORT = 3000;
  const PORT = process.env.PORT || 5000
 let config =
@@ -11,7 +13,31 @@ let config =
     delay: 3000,
     urlMinChars: 4,
     urlMaxChars: 12,
+    proxy:'http://51.15.179.176:8118',
 }
+
+var options = {
+    headers:
+    {
+        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36',
+        'Accept-Language': 'en-US,en;q=0.9,es;q=0.8',
+    },
+    proxy:config.proxy,
+    
+}
+
+/*
+request({
+    url: 'https://api.ipify.org?format=json',
+    proxy: 'http://64.124.38.140:8080'
+}, function (error, response, body) {
+    if (error) {
+        console.log(error);
+    } else {
+        console.log(body);
+    }
+});
+*/
 
 
 app.use(express.static('static'));
@@ -25,16 +51,11 @@ app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
 
 
 
-var options = {
-    headers:
-    {
-        'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36',
-        'Accept-Language': 'en-US,en;q=0.9,es;q=0.8',
-    },
-    "host":"154.16.63.16",
-    "port":"8000",
-    "proxy":"http://154.16.63.16:8000",
-}
+
+
+
+
+
 
 let saveToFile = (newUrl) => {
     let data = fs.readFileSync('./data/data.json');
@@ -85,8 +106,10 @@ let getImgUrl = (callback) => {
     let randomID = makeid();
 
     let url = 'https://prnt.sc/' + randomID;
+    
+  //  options.url = url;
 
-    request(url, options, function (error, response, html) {
+    request( url,options, function (error, response, html) {
 
         if (!error && response.statusCode == 200) {
             var $ = cheerio.load(html);
@@ -107,20 +130,30 @@ let getImgUrl = (callback) => {
         }
         else {
             console.log("🚔 Might be IP Blocked! 🚔");
+            getIP();
+            
             callback(false);
         }
 
     });
 
-    request('https://api.ipify.org?format=json', options, function (error, response, html) {
-
-        console.log(html.body);
-       
+   
 
 
+}
+
+let getIP = (callback) => 
+{
+    request({
+        url: 'https://api.ipify.org?format=json',
+        proxy: config.proxy
+    }, function (error, response, body) {
+        if (error) {
+            console.log(error);
+        } else {
+            console.log(body);
+        }
     });
-
-
 }
 
 
