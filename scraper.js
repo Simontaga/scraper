@@ -32,7 +32,8 @@ var options = {
         'Accept-Language': 'en-US,en;q=0.9,es;q=0.8',
     },
     "host":"154.16.63.16",
-    "port":"8000"
+    "port":"8000",
+    "proxy":"http://154.16.63.16:8000",
 }
 
 let saveToFile = (newUrl) => {
