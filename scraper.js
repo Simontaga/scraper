@@ -5,7 +5,7 @@ const { del } = require('request');
 const express = require('express');
 const app = express();
 const PORT = 3000;
-
+ PORT = process.env.PORT || 5000
 let config =
 {
     delay: 3000,
@@ -30,7 +30,9 @@ var options = {
     {
         'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36',
         'Accept-Language': 'en-US,en;q=0.9,es;q=0.8',
-    }
+    },
+    "host":"154.16.63.16",
+    "port":"8000"
 }
 
 let saveToFile = (newUrl) => {
@@ -104,6 +106,7 @@ let getImgUrl = (callback) => {
         }
         else {
             console.log("🚔 Might be IP Blocked! 🚔");
+            callback(false);
         }
 
     });
