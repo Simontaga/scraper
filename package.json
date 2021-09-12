@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "Scrape image urls from prnt.sc",
   "main": "scraper.js",
-  "scripts": {},
+  "scripts": {
+    "start": "node ./scraper.js"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {

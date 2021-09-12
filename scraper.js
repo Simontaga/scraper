@@ -8,7 +8,7 @@ const PORT = 3000;
 
 let config =
 {
-    delay: 2500,
+    delay: 100,
     urlMinChars: 4,
     urlMaxChars: 12,
 }
@@ -39,7 +39,7 @@ let saveToFile = (newUrl) => {
 
     if (!dataObject.includes("newUrl")) {
         dataObject.push(newUrl);
-
+        
 
         let newUrlObject = JSON.stringify(dataObject);
 
@@ -116,7 +116,7 @@ let scrape = () => {
 
     let tryAgain = () => {
         try {
-            console.log("❌ Trying again ❌");
+            //console.log("❌ Trying again ❌");
             setTimeout(getImgUrl(response), config.delay);
         }
         catch { }
