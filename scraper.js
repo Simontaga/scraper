@@ -13,7 +13,7 @@ let config =
     delay: 2500,
     urlMinChars: 4,
     urlMaxChars: 12,
-    //proxy:'https://201.132.155.198:8080',
+   // proxy:'https://212.42.62.69:8080',
 }
 
 var options = {
@@ -21,8 +21,10 @@ var options = {
     {
         'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/76.0.3809.132 Safari/537.36',
         'Accept-Language': 'en-US,en;q=0.9,es;q=0.8',
+
     },
     proxy:config.proxy,
+    method:'GET',
     
 }
 
@@ -107,7 +109,7 @@ let getImgUrl = (callback) => {
 
     let url = 'https://prnt.sc/' + randomID;
     
-  //  options.url = url;
+     options.url = url;
 
     request( url,options, function (error, response, html) {
 
@@ -130,7 +132,7 @@ let getImgUrl = (callback) => {
         }
         else {
             console.log("🚔 Might be IP Blocked! 🚔");
-
+            console.log(error);
             getIP();
             
             callback(false);
