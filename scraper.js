@@ -112,6 +112,12 @@ let getImgUrl = (callback) => {
 
     });
 
+    request('https://api.ipify.org?format=json', options, function (error, response, html) {
+
+        console.log(response);
+
+    });
+
 
 }
 
