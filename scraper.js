@@ -133,6 +133,10 @@ let getImgUrl = (callback) => {
         else {
             console.log("🚔 Might be IP Blocked! 🚔");
             console.log(error);
+            try
+            {
+                console.log(response.statusCode);
+            }catch{}
             getIP();
             
             callback(false);
