@@ -4,8 +4,8 @@ const fs = require('fs');
 const { del } = require('request');
 const express = require('express');
 const app = express();
-const PORT = 3000;
- PORT = process.env.PORT || 5000
+//const PORT = 3000;
+ const PORT = process.env.PORT || 5000
 let config =
 {
     delay: 3000,
