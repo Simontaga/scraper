@@ -10,10 +10,10 @@ const app = express();
  const PORT = process.env.PORT || 5000
 let config =
 {
-    delay: 3000,
+    delay: 2500,
     urlMinChars: 4,
     urlMaxChars: 12,
-    proxy:'http://51.15.179.176:8118',
+    //proxy:'https://201.132.155.198:8080',
 }
 
 var options = {
@@ -130,6 +130,7 @@ let getImgUrl = (callback) => {
         }
         else {
             console.log("🚔 Might be IP Blocked! 🚔");
+
             getIP();
             
             callback(false);
@@ -149,7 +150,7 @@ let getIP = (callback) =>
         proxy: config.proxy
     }, function (error, response, body) {
         if (error) {
-            console.log(error);
+            console.log("Could not get IP 👜 ");
         } else {
             console.log(body);
         }
@@ -189,4 +190,5 @@ let scrape = () => {
 }
 
 // 🎈
+getIP();
 scrape();
