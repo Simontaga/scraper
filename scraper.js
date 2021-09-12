@@ -8,7 +8,7 @@ const PORT = 3000;
 
 let config =
 {
-    delay: 100,
+    delay: 3000,
     urlMinChars: 4,
     urlMaxChars: 12,
 }
