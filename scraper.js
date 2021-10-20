@@ -63,7 +63,7 @@ let saveToFile = (newUrl) => {
     let data = fs.readFileSync('./data/data.json');
     let dataObject = JSON.parse(data);
 
-    if (!dataObject.includes("newUrl")) {
+    if (!dataObject.includes(newUrl) && newUrl != '//st.prntscr.com/2021/10/17/2301/img/0_173a7b_211be8ff.png') {
         dataObject.push(newUrl);
         
 
@@ -75,8 +75,9 @@ let saveToFile = (newUrl) => {
 
             console.log("✨ New data added ✨");
         });
-    } else {
-        console.log("😑 Duplicate 🤐");
+    }
+    else{
+        console.log("😑 Duplicate or deleted picture 🤐");
     }
 
 
