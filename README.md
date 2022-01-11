@@ -21,4 +21,3 @@ I am not responsible for your actions using this tool. <br>
 
 There can and will be explicit images which are found by using this tool. <br>
 
-If you come by any so called "bitcoin wallets" or "bitcoin exchanges" they are more than likely fake. Scammers have uploaded screenshots of fake bitcoin exchanges targeting people manipulating the prnt.sc URL ,  ```4D Chess ♟️ ```
